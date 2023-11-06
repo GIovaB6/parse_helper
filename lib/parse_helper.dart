@@ -4,7 +4,7 @@ library parse_helper;
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 
-// import 'logger.dart';
+
 class ParseHelper {
 
   static Future<ParseObject> fetchParseObjectFromObjId(String oid,String classname) async {
@@ -81,39 +81,3 @@ class ParseHelper {
 
 
 
-  // static Future<String> fetchCustomerFromShared() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? stripeCustomerId = prefs.getString('stripeCustomerId');
-
-  //   if(stripeCustomerId != null) {
-  //     // Logger.log("MY STRIPE CUSTOMER ID" + stripeCustomerId);
-  //     return stripeCustomerId;
-  //   } else {
-  //     //  Logger.log("NOT STRIPE CUSTOMER ID");
-  //     return "";
-  //    }
-
-  // }
-  
-  // static Future<String> fetchCustomerId({
-  //   required BuildContext context,
-  // }) async{
-
-
-  //   ParseUser currentUser = await ParseUser.currentUser();
-
-  //   currentUser.update();
-  //   //Check if customer
-  //   if(currentUser.get("customerId") == null) {
-  //     // Logger.log("NOT CUSTOMER");
-  //     //TODO DialogUtils.showStrongErrorDialog(
-  //     //     context: context,
-  //     //     message: "lbl_attention".tr,
-  //     //     title: "lbl_attention".tr
-  //     // );
-  //     return "";
-  //   } else {
-  //     // Logger.log("IS ALREADY CUSTOMER ");
-  //     return currentUser.get("customerId") as String;
-  //   }
-  // }
