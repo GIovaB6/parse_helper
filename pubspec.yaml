@@ -1,7 +1,10 @@
 name: parse_helper
 description: A flutter package with utils for Manage data from/to Parse_Server.
-version: 0.0.1
+version: 0.0.2
 homepage:
+platforms:
+  android:
+  ios:
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
