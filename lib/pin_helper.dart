@@ -117,7 +117,6 @@ class PinHelper {
         List<String> objectIdList = objectIds.split(';');
 
         for (String objectId in objectIdList) {
-          // Logger.log("object id obj " + objectId);
             objectList.add(objectId);
           }
       }
