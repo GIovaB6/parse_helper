@@ -1,5 +1,6 @@
 library parse_helper;
 
+import 'package:parse_helper/model/relation_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class ParseHelper {
@@ -33,14 +34,16 @@ class ParseHelper {
     return emptyList;
   }
 
-  //* classname => The name of parse Class
-  //* conditions => a Map of condition where/equalTo
-  //* includes => a list of class included in my record for inner visibility of objects
+  /// [classname] for query on a parseclass
+  /// [conditions] is  a Map of condition ParseQuery.whereEqualTo
+  /// [includes] a list of class included in my record for inner visibility of [ParseObject]
+  /// [Relation] for query the relation into a raw
 
   static Future<List<ParseObject>> fetchListParseObjectWithCondition(
       String classname,
       Map<String, dynamic>? conditions,
-      List<String>? includes) async {
+      List<String>? includes,
+      Relation? relation) async {
     final QueryBuilder<ParseObject> parseQuery =
         QueryBuilder<ParseObject>(ParseObject(classname));
 
@@ -55,6 +58,11 @@ class ParseHelper {
       if (includes.isNotEmpty) {
         parseQuery.includeObject(includes);
       }
+    }
+
+    if (relation != null) {
+      parseQuery.whereRelatedTo(
+          relation.column, relation.classname, relation.objectId);
     }
 
     final ParseResponse apiResponse = await parseQuery.query();
