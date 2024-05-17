@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Added OrderBy optional for query
+
 ## 0.0.5
 
 * Setted bigger limit for the query, and add new PinHelper
