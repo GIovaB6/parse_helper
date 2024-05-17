@@ -1,5 +1,6 @@
 library parse_helper;
 
+import 'package:flutter/foundation.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 const String classname = "Event";
@@ -14,7 +15,7 @@ class ParseStoreEvent {
     if (response.success) {
       return true;
     } else {
-      print("Error for saving with error ${response.error}");
+      debugPrint("Error for saving with error ${response.error}");
       return false;
     }
   }

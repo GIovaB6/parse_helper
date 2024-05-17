@@ -15,7 +15,7 @@ class ParseHelper {
       return apiResponse.results?.first as ParseObject;
     }
 
-    return new ParseObject(classname);
+    return ParseObject(classname);
   }
 
   static Future<List<ParseObject>> fetchListParseObjectFromObjId(
@@ -24,9 +24,11 @@ class ParseHelper {
         QueryBuilder<ParseObject>(ParseObject(classname));
     parseQuery.whereEqualTo(column, value);
 
+    parseQuery.setLimit(10000);
+
     final ParseResponse apiResponse = await parseQuery.query();
     if (apiResponse.success && apiResponse.results != null) {
-      if (apiResponse.results != null && apiResponse.results!.length > 0) {
+      if (apiResponse.results != null && apiResponse.results!.isNotEmpty) {
         return apiResponse.results as List<ParseObject>;
       }
     }
@@ -46,6 +48,8 @@ class ParseHelper {
       Relation? relation) async {
     final QueryBuilder<ParseObject> parseQuery =
         QueryBuilder<ParseObject>(ParseObject(classname));
+
+    parseQuery.setLimit(10000);
 
     if (conditions != null) {
       //Add where Condition
@@ -67,7 +71,7 @@ class ParseHelper {
 
     final ParseResponse apiResponse = await parseQuery.query();
     if (apiResponse.success && apiResponse.results != null) {
-      if (apiResponse.results != null && apiResponse.results!.length > 0) {
+      if (apiResponse.results != null && apiResponse.results!.isNotEmpty) {
         return apiResponse.results as List<ParseObject>;
       }
     }
