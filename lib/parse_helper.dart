@@ -9,6 +9,8 @@ class ParseHelper {
     String classname, {
     List<String>? includes,
     int? limit,
+    String? orderAsc,
+    String? orderDesc,
   }) async {
     final QueryBuilder<ParseObject> parseQuery =
         QueryBuilder<ParseObject>(ParseObject(classname));
@@ -21,6 +23,13 @@ class ParseHelper {
       if (includes.isNotEmpty) {
         parseQuery.includeObject(includes);
       }
+    }
+    if (orderAsc != null && orderAsc.isNotEmpty) {
+      parseQuery.orderByAscending(orderAsc);
+    }
+
+    if (orderDesc != null && orderDesc.isNotEmpty) {
+      parseQuery.orderByDescending(orderDesc);
     }
 
     final ParseResponse apiResponse = await parseQuery.query();
