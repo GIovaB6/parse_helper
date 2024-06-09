@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Added limit and includes to fetchByObjId  
+
 ## 0.0.6
 
 * Added OrderBy optional for query

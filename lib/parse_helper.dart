@@ -5,10 +5,23 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class ParseHelper {
   static Future<ParseObject> fetchParseObjectFromObjId(
-      String oid, String classname) async {
+    String oid,
+    String classname, {
+    List<String>? includes,
+    int? limit,
+  }) async {
     final QueryBuilder<ParseObject> parseQuery =
         QueryBuilder<ParseObject>(ParseObject(classname));
     parseQuery.whereEqualTo('objectId', oid);
+
+    parseQuery.setLimit(limit ?? 10000);
+
+    //Add IncludeObject
+    if (includes != null) {
+      if (includes.isNotEmpty) {
+        parseQuery.includeObject(includes);
+      }
+    }
 
     final ParseResponse apiResponse = await parseQuery.query();
     if (apiResponse.success && apiResponse.results != null) {
