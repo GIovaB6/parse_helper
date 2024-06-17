@@ -1,3 +1,7 @@
+## 0.0.9
+
+* Updated version of parse_sdk_flutter to 8.0.0 
+
 ## 0.0.8
 
 * Added orderBy 
