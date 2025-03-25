@@ -1,3 +1,7 @@
+## 1.0.0
+
+* Updated parse_sdk_flutter to 9.0.0 and some change into Sign of method
+
 ## 0.0.9
 
 * Updated version of parse_sdk_flutter to 8.0.0 

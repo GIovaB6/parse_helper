@@ -77,10 +77,10 @@ class ParseHelper {
   /// [Relation] for query the relation into a raw
   /// [orderAsc] & [orderDesc] if setted order the query for column passed ascending or descending
   static Future<List<ParseObject>> fetchListParseObjectWithCondition(
-    String classname,
+    String classname, {
     Map<String, dynamic>? conditions,
     List<String>? includes,
-    Relation? relation, {
+    Relation? relation,
     String? orderAsc,
     String? orderDesc,
   }) async {
